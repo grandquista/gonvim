@@ -31,10 +31,10 @@ func (c *Cursor) move() {
 
 func (c *Cursor) updateShape() {
 	mode := c.ws.mode
-	if mode == "normal" {
+	if mode == GonvimNormal {
 		c.widget.Resize2(c.ws.font.width, c.ws.font.lineHeight)
 		c.widget.SetStyleSheet("background-color: rgba(255, 255, 255, 0.5)")
-	} else if mode == "insert" {
+	} else if mode == GonvimInsert {
 		c.widget.Resize2(1, c.ws.font.lineHeight)
 		c.widget.SetStyleSheet("background-color: rgba(255, 255, 255, 0.9)")
 	}

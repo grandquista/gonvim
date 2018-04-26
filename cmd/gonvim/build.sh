@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-DIR="$HOME/go/src/github.com/dzhou121/gonvim/cmd/gonvim"
+DIR="$HOME/go/src/github.com/grandquista/gonvim/cmd/gonvim"
 
 # build darwin
 cd $DIR

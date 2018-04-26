@@ -40,20 +40,20 @@ func newMarkdown(workspace *Workspace) *Markdown {
 		markdownUpdates: make(chan string, 1000),
 		ws:              workspace,
 	}
-	m.ws.signal.ConnectMarkdownSignal(func() {
-		content := <-m.markdownUpdates
-		if !m.htmlSet {
-			m.htmlSet = true
-			m.webpage.SetHtml(m.getHTML(content), core.NewQUrl())
-		} else {
-			m.container.SetPlainTextDefault(content)
-			m.container.TextChanged()
-		}
-		m.updatePos()
-		// line, _ := m.ws.nvim.CurrentLine()
-		// m.webpage.FindText(string(line), 0)
-		// m.webpage.FindText("", 0)
-	})
+	// m.ws.signal.ConnectMarkdownSignal(func() {
+	// 	content := <-m.markdownUpdates
+	// 	if !m.htmlSet {
+	// 		m.htmlSet = true
+	// 		m.webpage.SetHtml(m.getHTML(content), core.NewQUrl())
+	// 	} else {
+	// 		m.container.SetPlainTextDefault(content)
+	// 		m.container.TextChanged()
+	// 	}
+	// 	m.updatePos()
+	// 	// line, _ := m.ws.nvim.CurrentLine()
+	// 	// m.webpage.FindText(string(line), 0)
+	// 	// m.webpage.FindText("", 0)
+	// })
 	m.webview.ConnectEventFilter(func(watched *core.QObject, event *core.QEvent) bool {
 		if event.Type() == core.QEvent__KeyPress {
 			keyPress := gui.NewQKeyEventFromPointer(event.Pointer())
@@ -196,7 +196,7 @@ func (m *Markdown) update() {
 			%s
 			</div>
 			`, string(output))
-	m.ws.signal.MarkdownSignal()
+	// m.ws.signal.MarkdownSignal()
 }
 
 func (m *Markdown) getHTML(content string) string {

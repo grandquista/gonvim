@@ -5,7 +5,7 @@ import (
 
 	_ "net/http/pprof"
 
-	"github.com/dzhou121/gonvim/editor"
+	"github.com/grandquista/gonvim/editor"
 )
 
 func main() {

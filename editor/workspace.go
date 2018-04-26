@@ -9,7 +9,7 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/dzhou121/gonvim/fuzzy"
+	"github.com/grandquista/gonvim/fuzzy"
 	"github.com/neovim/go-client/nvim"
 	"github.com/therecipe/qt/core"
 	"github.com/therecipe/qt/gui"
@@ -111,11 +111,11 @@ func newWorkspace(path string) (*Workspace, error) {
 			editor.workspaceUpdate()
 		}
 	})
-	fontFamily := ""
+	var fontFamily string
 	switch runtime.GOOS {
 	case "windows":
 		fontFamily = "Consolas"
-	case "darwin":
+	case GonvimDarwin:
 		fontFamily = "Courier New"
 	default:
 		fontFamily = "Monospace"

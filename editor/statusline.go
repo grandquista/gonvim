@@ -317,14 +317,14 @@ func (s *StatusMode) redraw() {
 	text := s.mode
 	bg := newRGBA(102, 153, 204, 1)
 	switch s.mode {
-	case "normal":
-		text = "normal"
+	case GonvimNormal:
+		text = GonvimNormal
 		bg = newRGBA(102, 153, 204, 1)
 	case "cmdline_normal":
-		text = "normal"
+		text = GonvimNormal
 		bg = newRGBA(102, 153, 204, 1)
-	case "insert":
-		text = "insert"
+	case GonvimInsert:
+		text = GonvimInsert
 		bg = newRGBA(153, 199, 148, 1)
 	case "visual":
 		text = "visual"

@@ -304,7 +304,7 @@ func (e *Editor) convertKey(text string, key int, mod core.Qt__KeyboardModifier)
 		return fmt.Sprintf("<%s%s>", e.modPrefix(mod), "Bslash")
 	}
 
-	c := ""
+	var c string
 	if mod&e.controlModifier > 0 || mod&e.cmdModifier > 0 {
 		if int(e.keyControl) == key || int(e.keyCmd) == key || int(e.keyAlt) == key || int(e.keyShift) == key {
 			return ""
@@ -336,7 +336,7 @@ func (e *Editor) convertKey(text string, key int, mod core.Qt__KeyboardModifier)
 
 func (e *Editor) modPrefix(mod core.Qt__KeyboardModifier) string {
 	prefix := ""
-	if runtime.GOOS == "linux" || runtime.GOOS == "darwin" {
+	if runtime.GOOS == "linux" || runtime.GOOS == GonvimDarwin {
 		if mod&e.cmdModifier > 0 {
 			prefix += "D-"
 		}
@@ -390,7 +390,7 @@ func (e *Editor) initSpecialKeys() {
 	e.specialKeys[core.Qt__Key_F24] = "F24"
 	e.specialKeys[core.Qt__Key_Backspace] = "BS"
 	e.specialKeys[core.Qt__Key_Delete] = "Del"
-	e.specialKeys[core.Qt__Key_Insert] = "Insert"
+	e.specialKeys[core.Qt__Key_Insert] = GonvimInsert
 	e.specialKeys[core.Qt__Key_Home] = "Home"
 	e.specialKeys[core.Qt__Key_End] = "End"
 	e.specialKeys[core.Qt__Key_PageUp] = "PageUp"
@@ -410,7 +410,7 @@ func (e *Editor) initSpecialKeys() {
 	e.altModifier = core.Qt__AltModifier
 	e.keyAlt = core.Qt__Key_Alt
 	e.keyShift = core.Qt__Key_Shift
-	if goos == "darwin" {
+	if goos == GonvimDarwin {
 		e.controlModifier = core.Qt__MetaModifier
 		e.cmdModifier = core.Qt__ControlModifier
 		e.metaModifier = core.Qt__AltModifier
